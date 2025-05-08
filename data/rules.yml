@@ -1,7 +1,5 @@
 version: "2.0"
-
 rules:
-
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
@@ -11,3 +9,19 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: تأكيد الطلب عند موافقة المستخدم
+  condition:
+  - slot_was_set:
+    - order_context: true
+  steps:
+  - intent: affirm
+  - action: utter_confirm_order
+
+- rule: إلغاء الطلب عند رفض المستخدم
+  condition:
+  - slot_was_set:
+    - order_context: true
+  steps:
+  - intent: deny
+  - action: utter_cancel_order

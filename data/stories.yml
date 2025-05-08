@@ -1,7 +1,5 @@
 version: "2.0"
-
 stories:
-
 - story: happy path
   steps:
   - intent: greet
@@ -28,3 +26,43 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: confirm order path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: action_set_order_context
+  - intent: affirm
+  - action: utter_confirm_order
+
+- story: cancel order path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: action_set_order_context
+  - intent: deny
+  - action: utter_cancel_order
+- story: استفسار عن المنتجات
+  steps:
+  - intent: inquire_product
+  - action: utter_product_inquiry
+
+- story: معلومات عن الشحن
+  steps:
+  - intent: ask_shipping
+  - action: utter_shipping_info
+
+- story: متابعة حالة الطلب
+  steps:
+  - intent: ask_order_status
+  - action: utter_order_status
+
+- story: معلومات عن الشركة
+  steps:
+  - intent: ask_company_info
+  - action: utter_company_info
+
+- story: بيانات التواصل
+  steps:
+  - intent: ask_contact_info
+  - action: utter_contact_info  
